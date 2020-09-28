@@ -18,8 +18,9 @@ class Node{
 
 class DoublyLinkedList{
     constructor(val){
-        this.val = val
-        this.next = null;      
+        this.head = null;
+        this.tail = null;
+        this.length = 0;      
     }
     push(val){
         var node = new Node(val);
@@ -35,6 +36,14 @@ class DoublyLinkedList{
         return this;
     }
     shift(){
-        
+      if(this.length === 0) {
+        return undefined;
+      }
+      let temp = this.head;
+      this.head = this.head.next;
+      temp.prev = null;
+      temp.next = null;
+      this.length--;
+      return temp;
     }
 }
